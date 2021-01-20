@@ -1,0 +1,17 @@
+<div class="calculator">
+
+    <input type="text" class="calculator-screen" [ngModel]="calculator.display | async" disabled />
+
+    <div class="calculator-keys">
+        <button *ngFor="let operator of calculator.operators" type="button" class="operator"
+            (click)="write(operator)">{{operator}}</button>
+        <button *ngFor="let number of calculator.numbers" type="button" (click)="write(number)">{{number}}</button>
+        <button type="button" class="decimal" value=".">.</button>
+        <button *ngFor="let action of calculator.actions" type="button" class="all-clear"
+            (click)="clear(action)">{{action | uppercase }}</button>
+        <button type="button" class="equal-sign operator" (click)="equal()">=</button>
+        <div class="calculator-history">
+            <div *ngFor="let expression of calculator.history">{{expression}} </div>
+        </div>
+    </div>
+</div>
